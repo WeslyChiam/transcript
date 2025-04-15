@@ -1,9 +1,12 @@
 from moviepy import VideoFileClip
+from openai import OpenAI, OpenAIError
 
 import filetype
+import os
 import tempfile
 import uuid
-import os
+
+import prompt
 
 ALLOWED_FILE_TYPES = {"mp4", "mp3"}
 
@@ -52,4 +55,32 @@ def convert_bytes_2_vid_no_audio(file_bytes: bytes):
     clip.without_audio().write_videofile(output_path, codec="libx264", audio=False)
     clip.close()
     return output_path
+
+def ai_transcript(audio_path: str, token: str):
+    print("token: " + token)
+    
+    # client = OpenAI(api_key=token)
+    # audio_file = client.files.create(
+    #     file=open(audio_path, "rb"), 
+    #     purpose="user_data",
+    # )
+    # response = client.responses.create(
+    #     model="gpt-4.1", 
+    #     input=[
+    #         {
+    #             "role": "user", 
+    #             "content": [
+    #                 {
+    #                     "type": "input_file", 
+    #                     "file_id": audio_file.id, 
+    #                 }, 
+    #                 {
+    #                     "type": "input_text", 
+    #                     "text": prompt.PROMPT
+    #                 }
+    #             ]
+    #         }
+    #     ]
+    # )
+    # return response
 
