@@ -73,10 +73,10 @@ async def transcription_via_url_with_gpt(
         raise HTTPException(status_code=400, detail="Invalid url video format")
     audio_path = functions.convert_bytes_2_audio(file_bytes=file_bytes)
 
-    with open(audio_path, "rb") as audio_file: 
-        audio_bytes = audio_file.read()
-        audio_b64 = base64.b64encode(audio_bytes).decode('utf-8')
-    os.remove(audio_path)
+    # with open(audio_path, "rb") as audio_file: 
+    #     audio_bytes = audio_file.read()
+    #     audio_b64 = base64.b64encode(audio_bytes).decode('utf-8')
+    # os.remove(audio_path)
 
     # if user_id is None:
     #     user_id = "dev-12980912"
