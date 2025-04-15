@@ -91,7 +91,7 @@ async def transcription_via_url_with_gpt(
         data = json.dumps(data), 
     )
 
-    new_audio_b64 = base64.b64encode(file_bytes).decode('utf-8')
+    # new_audio_b64 = base64.b64encode(file_bytes).decode('utf-8')
 
     # Get conversation id
     json_response = response.json()
@@ -112,7 +112,7 @@ async def transcription_via_url_with_gpt(
                         "type": "audio", 
                         "audio": {
                             "url": audio_path,
-                            "name": audio_path, 
+                            "name": "output", 
                             "format": "mp3"
                         }
                     }
