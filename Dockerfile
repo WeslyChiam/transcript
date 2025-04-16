@@ -10,8 +10,8 @@ COPY . .
 # Install ffmpeg and Python + pip inside a shell using nix-shell
 RUN nix-env -iA \
   nixpkgs.ffmpeg \
-  nixpkgs.python38 \
-  nixpkgs.python38Packages.pip
+  nixpkgs.python39 \
+  nixpkgs.python39Packages.pip
 
 # Install Python packages via pip
 RUN pip install --upgrade pip && pip install -r requirements.txt
