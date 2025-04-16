@@ -10,7 +10,6 @@ import httpx
 import json
 import os
 import requests
-import requests
 import subprocess
 import sys
 import tempfile
