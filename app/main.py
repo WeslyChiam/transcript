@@ -28,7 +28,7 @@ async def extract_audio_via_url(url: str):
     """Extrac audio from url"""
     try:
         async with httpx.AsyncClient() as client:
-            response = await client.get(str(url))
+            response = await client.get(str(url), timeout=30)
         if response.status_code != 200:
             raise HTTPException(status_code=response.status_code, detail={"error": str(response.text)})
         file_bytes = response.content
